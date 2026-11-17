@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>基礎化學核心知識庫與互動實驗室</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#09090B;--b2:#121316;--tx:#FAFAFA;--mu:#A1A1AA;--bd:rgba(255,255,255,.08);--in:#6366F1;--cy:#22D3EE;--em:#10B981;--am:#F59E0B;--ro:#F43F5E;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
+body{margin:0;background:radial-gradient(ellipse 80% 50% at 50% -15%,rgba(99,102,241,.22),rgba(34,211,238,.06) 45%,transparent 75%) no-repeat,var(--bg);color:var(--mu);font:400 15.5px/1.8 Inter,"Noto Sans TC",sans-serif;font-variant-numeric:tabular-nums}
+h1,h2,h3{color:var(--tx);letter-spacing:-.03em;margin:0;line-height:1.2}
+h1{font-size:clamp(34px,7vw,62px);font-weight:900}h2{font-size:clamp(24px,4vw,34px);font-weight:800}h3{font-size:15px;font-weight:700;margin-bottom:6px}
+nav{position:sticky;top:0;z-index:9;display:flex;align-items:center;gap:4px;overflow-x:auto;padding:10px 16px;background:rgba(9,9,11,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);scrollbar-width:none}
+nav a{color:var(--mu);text-decoration:none;font-size:13px;padding:5px 11px;border-radius:99px;white-space:nowrap;transition:all .3s ease-out}
+nav a:hover{color:var(--tx);background:rgba(255,255,255,.08)}
+nav .sp{flex:1}.trk{font:600 12px "JetBrains Mono",monospace;color:var(--cy);white-space:nowrap;padding:0 8px}
+section,header{max-width:1120px;margin:0 auto;padding:96px 20px 0}
+header{text-align:center}header p{max-width:560px;margin:18px auto 0}
+.hd{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.hd svg{width:28px;height:28px;stroke:var(--in);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.hd .sp{flex:1}
+.g{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.s4{grid-column:span 4}.s6{grid-column:span 6}.s12{grid-column:span 12}
+@media(max-width:820px){.g>*{grid-column:span 12}section{padding-top:72px}}
+.card{background:rgba(255,255,255,.035);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:16px;padding:22px;transition:all .3s ease-out}
+.card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.4);box-shadow:0 0 32px rgba(99,102,241,.14)}
+.u .card:hover{border-color:rgba(34,211,238,.4);box-shadow:0 0 32px rgba(34,211,238,.14)}
+button{font:inherit;font-size:14px;color:var(--tx);background:rgba(255,255,255,.06);border:1px solid var(--bd);border-radius:10px;padding:7px 14px;cursor:pointer;transition:all .3s ease-out}
+button:hover{background:rgba(255,255,255,.12);transform:translateY(-2px);box-shadow:0 0 20px rgba(99,102,241,.25)}
+button.on{background:rgba(99,102,241,.25);border-color:var(--in)}button.done{background:rgba(16,185,129,.18);border-color:var(--em)}
+:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.p{display:inline-block;padding:0 8px;margin:0 1px;border:1px solid transparent;border-radius:8px;background:rgba(99,102,241,.18);color:#C7D2FE;font:600 .92em "JetBrains Mono","Noto Sans TC",monospace;cursor:pointer;transition:all .3s ease-out}
+.u .p{background:rgba(34,211,238,.18);color:#67E8F9;border-color:rgba(34,211,238,.45)}
+.p.h{color:transparent!important;background:transparent!important;border:1px dashed #52525B;user-select:none}
+b{color:var(--tx)}.m{font-family:"JetBrains Mono",monospace;color:var(--cy)}
+input[type=range]{width:100%;accent-color:var(--in)}svg{max-width:100%;height:auto}
+.fc{cursor:pointer;min-height:130px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.q button{display:block;width:100%;text-align:left;margin:6px 0}
+.ok{border-color:var(--em)!important;background:rgba(16,185,129,.15)!important}.no{border-color:var(--ro)!important;background:rgba(244,63,94,.12)!important;text-decoration:line-through}
+footer{text-align:center;padding:96px 20px;font-size:13px}
+.tip{display:none;margin-top:12px;padding:10px 14px;border-left:2px solid var(--cy);background:rgba(34,211,238,.06);border-radius:0 10px 10px 0;font-size:14px}body.teach .tip{display:block}
+.pt{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}.pt button{padding:5px 0;text-align:center;font-size:13px;line-height:1.3}.pt i{display:block;font-style:normal;font-size:10px;color:var(--mu)}
+.w3{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}@media(max-width:820px){.w3{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style></head><body>
+<nav><a href="#m0">01 物質</a><a href="#m1">02 原子</a><a href="#m2">03 週期表</a><a href="#m3">04 水</a><a href="#m4">05 軟化純化</a><a href="#lab">實驗室</a><a href="#quiz">評量</a><span class="sp"></span><button id="tg" aria-pressed="false">教學提示</button><span class="trk" id="trk">教學完成度 0 / 5</span><button id="mk">全局遮蔽抽考</button></nav>
+<header><h1>基礎化學<br>核心知識庫與互動實驗室</h1><p>點擊膠囊可遮蔽／揭曉答案；每個模組內有互動圖解，右上「教學提示」可開關教學小撇步。</p></header>
+<div id="mods"></div>
+
+<section id="lab"><div class="hd"><h2>互動實驗室</h2></div><div class="g">
+<div class="card s6"><h3>Lab 01　波耳原子殼層模擬器 (Z = 1–20)</h3><input type="range" id="z" min="1" max="20" value="11" aria-label="原子序"><div class="pt" id="pg" style="margin:12px 0"></div><div style="text-align:center"><svg id="at" viewBox="-110 -110 220 220" width="240"></svg></div><p id="ai" style="margin:0"></p></div>
+<div class="card s6"><h3>Lab 02　密度曲線／CO₂ 三相圖</h3><div class="row"><button id="t1" class="on">水密度曲線</button><button id="t2">CO₂ 三相圖</button></div><div id="w1"><input type="range" id="tp" min="-5" max="40" step=".5" value="4" aria-label="溫度"><svg viewBox="0 0 320 170" width="100%" font-size="10" fill="#A1A1AA"><path id="cv" fill="none" stroke="#6366F1" stroke-width="2.2"/><line x1="20" y1="150" x2="300" y2="150" stroke="#52525B"/><circle id="cd" r="6" fill="#22D3EE"/><text x="20" y="165">−5°C</text><text x="268" y="165">40°C</text><text x="30" y="30" fill="#F59E0B">0°C 熔化：密度跳升</text><text x="85" y="14" fill="#10B981">4°C 峰值 1.0000</text></svg><p id="tpt" class="m" style="margin:0"></p></div>
+<div id="w2" hidden><div class="row" id="pb"></div><svg id="ph" viewBox="0 0 320 240" width="100%" font-size="12"></svg><p id="pt" style="margin:0"></p></div></div>
+</div></section>
+
+<section><div class="hd"><h2>Lab 03　快翻記憶卡</h2><span>點卡片翻面</span></div><div class="g" id="fl"></div></section>
+
+<section id="quiz"><div class="hd"><h2>綜合實戰評量</h2><span class="sp"></span><span class="m" id="sc">0 / 100</span><button id="rs">重新測驗</button></div><div class="g" id="qz"></div></section>
+<footer>內容依家教講義與課綱整理，仍以課本與老師講解為準。</footer>
+
+<script>
+const $=s=>document.querySelector(s),X=(t,a,h)=>{const e=document.createElement(t);Object.assign(e,a||{});if(h!==undefined)e.innerHTML=h;return e};
+const R=s=>s.replace(/【(.+?)】/g,'<span class="p" role="button" tabindex="0">$1</span>');
+const IC=['M12 3v18M5 8l7 4 7-4M5 16l7-4 7 4','M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0M12 12m-9 0a9 4 0 1 0 18 0a9 4 0 1 0-18 0','M3 3h18v18H3zM3 9h18M9 3v18','M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z','M6 3h12M9 3v6l-5 10a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-10V3'];
+const M=[
+['01　物質分類・吸放熱・CO₂ 三相圖',[
+'純物質：具固定組成與固定物性（熔點、沸點、密度、比熱），不可用物理方法分離。【元素】由【單一種原子】組成（H₂、O₂、O₃、Ag、Cu）；【化合物】由兩種以上原子依【一定比例】結合（H₂O、H₂O₂、HCl、CO、CO₂）。',
+'混合物：成分比例【不固定】，保有原本【化學】性質，可用物理方法分離。均勻：米酒、雙氧水（【過氧化氫 H₂O₂】＋水）、鹽酸（【氯化氫 HCl】＋水）；非均勻：土壤、混濁果汁。',
+'補充考點：2Ag + S → Ag₂S（化學變化）；鈍氣沸點隨分子量升高：He < Ne < Ar < Kr < Xe < Rn。',
+'性質：【物理】性質不改變分子本質（顏色、熔沸點）；【化學】性質需經反應才顯現（可燃性、助燃性、酸鹼性）。三態：固態 (s) ⇄ 液態 (l) ⇄ 氣態 (g)；熔化、汽化、昇華吸熱；凝固、凝結、凝華放熱。',
+'化學反應三特點：原子【種類】與【數目】不變；【分子】種類改變；伴隨【能量】變化。溫度升高，速率越【快】。',
+'吸熱反應：反應物能量【低】、生成物【高】，容器感覺【冷】（光合作用、電解、熱分解、多數固體溶於水）。',
+'放熱反應：反應物能量【高】、生成物【低】，容器感覺【熱】。溶於水放熱特例：【NaOH】、【濃硫酸稀釋】、【所有氣體】溶於水。',
+'CO₂ 三相圖：I【固體】、II【液體】、III【氣體】；三相點 A【−57°C】、【5.2 atm】；臨界點 C【31°C】、【73 atm】；昇華點 Z【−78°C】、【1.0 atm】。D 在固氣平衡線（D–Z–A）上，B 在固液平衡線（A–B）上，A–C 為液氣平衡線；CO₂ 三相圖與 H₂O 相似，講義只討論相異處。',
+'乾冰昇華：三相點壓力高於 1 atm，常壓下直接【昇華】（要見液態 CO₂ 須大於 5.2 atm）。AB 線斜率：多數物質與 CO₂ 為【正值】；唯獨水為【負值】（加壓冰的熔點下降）。']],
+['02　原子結構演變・原子序・同位素',[
+'1803 道耳頓：提出原子說，原子是不可再分的實心小球。',
+'1897 湯姆森：以【陰極射線】實驗發現【電子】（帶負電，在電場中偏向【正極】），並求出荷質比 (e/m)。',
+'氣體放電管：1 atm 時產生【電弧】；約 10⁻³ atm 時發光（日光燈、霓虹燈）；【高真空】時出現陰極射線（傳統映像管電視 CRT）。',
+'1909 密立坎：【油滴實驗】——以 X 射線使油滴帶電，測得電子電量 1.6×10⁻¹⁹ C，推算電子質量 9.11×10⁻³¹ kg。',
+'1911 拉塞福：以【α 粒子】（He²⁺）撞擊金箔，發現帶正電的【原子核】；1919 以 α 粒子撞擊氮核，發現【質子】。',
+'1932 查兌克：以 α 粒子撞擊【鈹 (Be)】核，發現不帶電的【中子】。',
+'三種射線：α（氦核 +2）、β（高速電子 −1）、γ（高能電磁波，不帶電）。',
+'粒子：質量 中子（1.00866 amu）＞ 質子（1.00728 amu）≫ 電子（0.00055 amu）；質子 +1、電子 −1、中子不帶電；質子與中子在原子核，電子在核外。電子決定【化學反應】；質子決定【元素種類】；中子決定【同位素】。原子體積約為原子核的【10¹⁵】倍（半徑約 10⁵ 倍），原子內大部分是空的。',
+'ᴬ_Z X 標示（原子序概念由【莫斯利】提出）：A =【質量數】＝質子＋中子；Z =【質子數】＝電子數（電中性）；A − Z ＝中子數。²³₁₁Na：質子 11、電子 11、中子【12】。',
+'同位素：【質子數】相同、【中子數】不同（¹H 氕、²H 氘、³H 氚，其中氕無中子；¹²C 與 ¹⁴C），化性相同、物性不同。',
+'同量素：質量數相同、原子序不同（¹⁴C 與 ¹⁴N），【物理性質相似，化學性質不同】。',
+'同素異形體：同元素、結構不同的單質。碳：【鑽石、石墨、C₆₀】；氧：【O₂、O₃】。']],
+['03　波耳電子排列・八隅體・週期表',[
+'波耳模型：提出【能階】概念，K(n=1)、L、M、N；n 越小能量越【低】，電子由 n 最【小】填起。每層最多【2n²】：K【2】、L【8】、M【18】、N【32】。',
+'電子組態表示法：₃Li (2,1)、₁₁Na (2,8,1)、₉F (2,7)、₁₇Cl (2,8,7)。',
+'核心規律：價電子數＝【A 族族數】；有電子的層數＝【週期數】。',
+'高頻陷阱：最外層最多 8 個（K 層為最外層時最多 2 個）。₂₀Ca 為【(2, 8, 8, 2)】（第四週期、2A），不可寫 (2, 8, 10)；₁₉K 為【(2, 8, 8, 1)】。',
+'八隅體：鈍氣最外層【8】個最穩定，唯獨 He 為【2】。其他元素傾向得失或共用電子達穩定。',
+'週期表：門得列夫依【原子量】；莫斯利依【原子序】。共 7 週期、【18】族，同族價電子數相同、化性相似。',
+'週期與族：週期表每一【橫列】稱為週期，同週期電子層數相同；每一【直行】稱為族。IUPAC（國際純粹與應用化學聯合會）將週期表分為【18】族；傳統分法依序為 1A、2A、3B、4B、5B、6B、7B、8B（三欄）、1B、2B、3A–8A，A 族為主族元素、B 族為過渡元素。',
+'族名：1A【鹼金族】（H 不是）；2A【鹼土金族】；7A【鹵素】；8A【鈍氣】（He 為 2）。',
+'金屬與非金屬：左下【金屬】易失電子，氧化物溶水呈【鹼】性；右上【非金屬】易得電子，氧化物呈【酸】性。',
+'原子半徑：同族由上而下漸【大】；同週期由左而右漸【小】。']],
+['04　水的性質・自來水淨化五步驟',[
+'水含量：人體含水約【70%】，地球表面約【70%】被海洋覆蓋，真正可利用的淡水約占地球總水量【1%】。',
+'物性：1 atm 沸點【100°C】、凝固點【0°C】；加壓沸點【上升】。【4°C】密度最大【1 g/cm³】；【汽化熱】與【比熱】大，調節【氣溫】；0→4°C 熱縮冷脹，4°C 時體積最小。',
+'化性：水＋活性金屬→氫氧化物＋【氫氣】；＋金屬氧化物→【鹼】性；＋非金屬氧化物→【酸】性。',
+'自然水：存在於自然界、未經處理的水（湖水、河水、地下水）。淨化過程為沉降、凝聚、過濾（除臭）、曝氣、消毒。',
+'沉降與凝聚：引入水池【靜置】澄清，大顆粒泥沙沉降、小微粒仍懸浮；加凝聚劑【明礬 KAl(SO₄)₂·12H₂O】形成【膠狀】Al(OH)₃ 包裹懸浮微粒。',
+'過濾與曝氣：沉澱後的水通過砂層，濾材多為直徑約【0.4～0.54 mm】的細砂；【活性碳】（或木炭）吸附色素與臭味。曝氣：讓水濺起水花，增加與【空氣】接觸面積、提高【溶氧量】，加速【微生物】把有機污染物氧化分解成【二氧化碳】與【水】。',
+'消毒：常用【氯氣】（濃度約 0.2～1.0 ppm，價錢便宜，但會殘留不良氣味，甚至產生致癌物質）與【臭氧】（濃度約 1.0 ppm，殺菌力比氯氣【強】，易自行分解、時效短，無法防止再次污染）。',
+'補充考點：糖水為【真溶液】，牛奶、豆漿為【膠體溶液】。NaClO + 2HCl → NaCl + H₂O + 【Cl₂↑（劇毒氯氣）】。']],
+['05　水的軟化與純化（重點強化）',[
+'硬水：含較多 Ca²⁺、【Mg²⁺】的水，分暫時硬水與永久硬水。缺點：(1) 與肥皂產生鈣皂／鎂皂沉澱（皂垢），降低洗滌效果；(2) 工業鍋爐加熱產生【鍋垢】（CaCO₃、Mg(OH)₂、CaSO₄），導熱不良甚至引發爆炸。',
+'暫時硬水：陰離子為【HCO₃⁻】，煮沸產生【CaCO₃】或【MgCO₃ / Mg(OH)₂】沉澱而軟化。',
+'永久硬水：陰離子為【SO₄²⁻】、【Cl⁻】，不能用煮沸法。煮沸法只適用【暫時】硬水。',
+'石灰蘇打法：加【Ca(OH)₂】與【Na₂CO₃】。陽離子交換：鈉型樹脂 R–Na 把 Ca²⁺、Mg²⁺ 換成 Na⁺，失效後用【濃食鹽水】再生。',
+'俗名：生石灰【CaO】｜熟石灰【Ca(OH)₂】｜石灰石【CaCO₃】｜蘇打【Na₂CO₃】｜小蘇打【NaHCO₃】｜燒鹼【NaOH】。',
+'鹽類酸鹼：強酸＋強鹼→中性（NaCl、KNO₃、Na₂SO₄）；強鹼＋弱酸→鹼性（Na₂CO₃、NaHCO₃、NaClO）；強酸＋弱鹼→酸性（NH₄Cl、明礬）。',
+'蒸餾法：水最純，但難去除【CO₂】等揮發性氣體，溶回水中呈微酸性。',
+'去離子水：第一柱【陽】離子樹脂 R–H 釋出【H⁺】，用【鹽酸】再生；第二柱【陰】離子樹脂 R′–OH 釋出【OH⁻】，用【NaOH】再生；H⁺ + OH⁻ → H₂O。特色：反應後水的【導電度】（離子濃度）大幅降低；對不解離的【分子】（葡萄糖、酒精）無效；兩柱不可顛倒。',
+'逆滲透：將水加壓流經【醋酸纖維】材質的【半透】膜；孔徑極小具【選擇】性，只讓【水】分子通過。【正】滲透：稀→濃，不耗能；【逆】滲透：濃→稀，需加壓。運用於海水淡化、工業廢水回收與家庭淨水器。']]];
+const W={0:`<h3>互動圖解：物質分類與變化判斷</h3><div class="w3"><svg viewBox="0 0 320 170" width="100%" fill="none" stroke="#A1A1AA" stroke-width="1.2"><g font-size="13" fill="#FAFAFA" stroke="none" text-anchor="middle"><text x="160" y="18">物質</text><text x="80" y="68">純物質</text><text x="240" y="68">混合物</text><text x="40" y="128">元素</text><text x="120" y="128">化合物</text><text x="200" y="128">均勻</text><text x="280" y="128">非均勻</text></g><path d="M160 24L80 54M160 24L240 54M80 74L40 114M80 74L120 114M240 74L200 114M240 74L280 114"/><g font-size="11" fill="#A1A1AA" stroke="none" text-anchor="middle"><text x="40" y="148">Ag、O₂</text><text x="120" y="148">H₂O、HCl</text><text x="200" y="148">米酒、鹽酸</text><text x="280" y="148">土壤</text></g></svg><div><p style="margin:0">先選答案類型，再點例子：</p><div class="row"><button id="mP">物理變化</button><button id="mC" class="on">化學變化</button></div><div class="row" id="ex"></div><p id="exr" style="color:var(--tx);margin:0"></p></div></div><div class="tip">口訣：有沒有產生新物質？布料剪裁（物理）與漂白、銀器變黑（化學）最貼近服飾科日常。</div>`,
+1:`<h3>互動圖解：原子模型演變</h3><div class="row" id="tl"></div><p id="tld" style="margin:0"></p><div class="tip">用「葡萄乾布丁 → 內有原子核 → 核內有質子與中子」串起四個模型。</div>`,
+3:`<h3>互動圖解：水的化學性質</h3><div class="row" id="rx"></div><p id="rxt" style="color:var(--tx);margin:0"></p><h3 style="margin-top:22px">互動圖解：淨化五步驟（水色會逐步變清）</h3><div class="row" id="pu"></div><div id="sw" style="height:60px;border-radius:12px;transition:all .6s;margin:8px 0;border:1px solid var(--bd)"></div><p id="pud" style="margin:0"></p><div class="tip">漂白水不可混鹽酸類清潔劑，是洗衣、打掃的實用安全知識，學生印象深刻。</div>`,
+4:`<div class="w3"><div><h3>互動圖解：暫時 vs 永久硬水</h3><div class="row"><button id="hT" class="on">暫時硬水</button><button id="hP">永久硬水</button></div><p id="ht" style="margin:0"></p></div><div><h3>互動圖解：逆滲透（拖曳外加壓力）</h3><input type="range" id="pr" min="0" max="100" value="30" aria-label="壓力"><svg viewBox="0 0 320 110" width="100%"><rect x="40" y="20" width="110" height="70" fill="none" stroke="#52525B"/><rect x="170" y="20" width="110" height="70" fill="none" stroke="#52525B"/><rect id="lw" x="40" width="110" fill="#6366F1" opacity=".45"/><rect id="rw" x="170" width="110" fill="#22D3EE" opacity=".45"/><path d="M160 15V95" stroke="#F43F5E" stroke-dasharray="4 3"/><text x="60" y="106" fill="#A1A1AA" font-size="11">海水＋加壓</text><text x="200" y="106" fill="#A1A1AA" font-size="11">純水側</text></svg><p id="prt" style="margin:0;color:var(--tx)"></p></div></div><div class="tip">滲透壓約在滑桿 50 的位置；外加壓力要超過它，水才會被擠過半透膜，用於海水淡化與淨水器。</div>`};
+const done=new Set();
+M.forEach((m,i)=>{const s=X('section',{id:'m'+i,className:i==4?'u':''});s.innerHTML='<div class="hd"><svg viewBox="0 0 24 24"><path d="'+IC[i]+'"/></svg><h2>'+m[0]+'</h2><span class="sp"></span><button>標記教學完成</button></div><div class="g"></div>';
+m[1].forEach(t=>{const k=t.indexOf('：'),c=X('div',{className:'card '+(t.length>105?'s12':'s6')},(k>0&&k<12?'<h3>'+t.slice(0,k)+'</h3>'+R(t.slice(k+1)):R(t)));s.lastChild.append(c)});
+s.querySelector('button').onclick=e=>{done.has(i)?done.delete(i):done.add(i);e.target.classList.toggle('done');e.target.textContent=done.has(i)?'已完成':'標記教學完成';$('#trk').textContent='教學完成度 '+done.size+' / 5'};if(W[i])s.lastChild.append(X('div',{className:'card s12'},W[i]));$('#mods').append(s)});
+$('#tg').onclick=e=>{const o=document.body.classList.toggle('teach');e.target.setAttribute('aria-pressed',o);e.target.classList.toggle('on',o)};
+const EX=[['冰融化成水',0],['鐵生鏽',1],['蠟燭燃燒',1],['糖溶於水',0],['剪裁布料',0],['漂白衣服',1],['銀器變黑',1],['水結冰',0]];let pick=1;
+$('#mP').onclick=()=>{pick=0;$('#mP').classList.add('on');$('#mC').classList.remove('on')};
+$('#mC').onclick=()=>{pick=1;$('#mC').classList.add('on');$('#mP').classList.remove('on')};
+EX.forEach(([t,a])=>{const b=X('button',{},t);b.onclick=()=>{const r=pick==a;b.className=r?'ok':'no';$('#exr').textContent=r?'答對！'+t+'是'+(a?'化學':'物理')+'變化':'再想想：有產生新物質嗎？'};$('#ex').append(b)});
+const TL=[['道耳頓','1803 提出原子說：原子是不可再分的實心小球。'],['湯姆森','1897 陰極射線發現電子，葡萄乾布丁模型：正電球體中嵌著電子。'],['拉塞福','1911 α 粒子撞金箔：多數穿過、少數偏折，發現帶正電的原子核，原子內大部分是空的。'],['查兌克','1932 發現中子，原子核由質子與中子組成。']];
+TL.forEach((x,i)=>{const b=X('button',{},x[0]);b.onclick=()=>{[...$('#tl').children].forEach(c=>c.classList.remove('on'));b.classList.add('on');$('#tld').textContent=x[1]};$('#tl').append(b);if(!i)b.click()});
+const RX=[['水＋活性金屬','2Na + 2H₂O → 2NaOH + H₂↑（氫氧化物＋氫氣）'],['水＋金屬氧化物','Na₂O + H₂O → 2NaOH（生成鹼性物質）'],['水＋非金屬氧化物','CO₂ + H₂O → H₂CO₃（生成酸性物質）']];
+RX.forEach(([a,b])=>{const e=X('button',{},a);e.onclick=()=>{[...$('#rx').children].forEach(c=>c.classList.remove('on'));e.classList.add('on');$('#rxt').textContent=b};$('#rx').append(e)});
+const PU=[['沉降','靜置於沉降池，大顆粒泥沙沉下，小微粒仍懸浮。',.9],['凝聚','加明礬，形成膠狀 Al(OH)₃ 包裹懸浮微粒一起沉降。',.65],['過濾','細砂濾固體，活性碳吸附色素與臭味。',.3],['曝氣','增加與空氣接觸面積、提高溶氧量，微生物分解有機物成 CO₂ 與水。',.15],['消毒','加氯氣或臭氧殺菌；臭氧殺菌力強但時效短。',0]];
+PU.forEach(([t,d,o],i)=>{const b=X('button',{},t);b.onclick=()=>{[...$('#pu').children].forEach(c=>c.classList.remove('on'));b.classList.add('on');$('#pud').textContent=d;$('#sw').style.background=o?'rgba(160,120,70,'+o+')':'rgba(34,211,238,.25)'};$('#pu').append(b);if(!i)b.click()});
+const HW={T:'含 Ca(HCO₃)₂、Mg(HCO₃)₂，煮沸即可軟化：Ca(HCO₃)₂ → CaCO₃↓ + H₂O + CO₂↑。',P:'含 CaSO₄、MgSO₄、CaCl₂ 等，煮沸無效，需用石灰蘇打法或離子交換法。'};
+function hs(k){$('#ht').textContent=HW[k];$('#hT').classList.toggle('on',k=='T');$('#hP').classList.toggle('on',k=='P')}$('#hT').onclick=()=>hs('T');$('#hP').onclick=()=>hs('P');hs('T');
+$('#pr').oninput=function(){const p=+this.value,d=(p-50)/50*14,l=45-d,r=45+d;$('#lw').setAttribute('y',l+20);$('#lw').setAttribute('height',70-l);$('#rw').setAttribute('y',r+20);$('#rw').setAttribute('height',70-r);$('#prt').textContent=p<=50?'壓力小於滲透壓：水自然流向濃的海水側，得不到淡水':'壓力大於滲透壓：水被擠過半透膜，純水側增加，可得淡水！'};$('#pr').oninput();
+document.addEventListener('click',e=>{if(e.target.classList.contains('p'))e.target.classList.toggle('h')});
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.classList.contains('p'))e.target.classList.toggle('h')});
+$('#mk').onclick=function(){const ps=[...document.querySelectorAll('.p')],hide=ps.some(p=>!p.classList.contains('h'));ps.forEach(p=>p.classList.toggle('h',hide));this.textContent=hide?'顯示解答':'全局遮蔽抽考';this.classList.toggle('on',hide)};
+// Lab01
+const N='H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca'.split(' '),TP={1:'H 不屬於鹼金族。',2:'He 最外層 2 個即穩定。',11:'講義例題：Na (2,8,1)。',17:'Cl (2,8,7)，7A 鹵素。',19:'K (2,8,8,1)，不是 (2,8,9)。',20:'Ca (2,8,8,2)，不可寫 (2,8,10)。'};
+function atom(z){let r=z,c=[];[2,8,8,2].forEach(m=>{const k=Math.min(m,r);if(k>0)c.push(k);r-=k});const n=c.length;
+let h='<circle r="16" fill="#6366F1"/><text y="5" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">+'+z+'</text>';
+c.forEach((k,j)=>{const R=[36,58,80,100][j];h+='<circle r="'+R+'" fill="none" stroke="#52525B" stroke-dasharray="3 3"/>';for(let e=0;e<k;e++){const a=2*Math.PI*e/k-1.57;h+='<circle cx="'+(R*Math.cos(a)).toFixed(1)+'" cy="'+(R*Math.sin(a)).toFixed(1)+'" r="5" fill="'+(j==n-1?'#22D3EE':'#818CF8')+'"/>'}});
+$('#at').innerHTML=h;const v=c[n-1];$('#ai').innerHTML='<b>'+z+' '+N[z-1]+'</b>　電子組態 (K,L,M,N) = <span class="m">('+c.join(', ')+')</span><br>價電子 '+v+' → '+(z==2?'8A（鈍氣）':v+'A 族')+'・'+n+' 個價殼層 → 第 '+n+' 週期<br>'+(TP[z]||'');$('#z').value=z;document.querySelectorAll('#pg button').forEach(b=>b.classList.toggle('on',b.dataset.z==z))}
+$('#z').oninput=e=>atom(+e.target.value);[[1,0,0,0,0,0,0,2],[3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18],[19,20]].flat().forEach(z=>{if(!z){$('#pg').append(X('span'));return}const b=X('button',{},N[z-1]+'<i>'+z+'</i>');b.dataset.z=z;b.onclick=()=>atom(z);$('#pg').append(b)});atom(11);
+// Lab02
+const rho=T=>T<0?.917:.99997495*(1-(T-3.9863)**2*(T+288.9414)/(508929.2*(T+68.12963)));const px=T=>20+(T+5)/45*280,py=d=>150-(d-.91)/.09*130;
+let d='M'+px(-5)+' '+py(.917)+'L'+px(0)+' '+py(.917)+'L'+px(0)+' '+py(rho(0));for(let T=.5;T<=40;T+=.5)d+='L'+px(T)+' '+py(rho(T));$('#cv').setAttribute('d',d);
+$('#tp').oninput=function(){const T=+this.value,r=rho(T);$('#cd').setAttribute('cx',px(T));$('#cd').setAttribute('cy',py(r));$('#tpt').textContent=T+'°C　密度 '+r.toFixed(4)+' g/cm³　'+(T<0?'冰：密度較小，浮在水面':T<4?'0–4°C：熱縮冷脹（反常）':T==4?'4°C：密度最大':'高於 4°C：熱脹冷縮')};$('#tp').oninput();
+$('#t1').onclick=()=>{$('#w1').hidden=false;$('#w2').hidden=true;$('#t1').classList.add('on');$('#t2').classList.remove('on')};
+$('#t2').onclick=()=>{$('#w1').hidden=true;$('#w2').hidden=false;$('#t2').classList.add('on');$('#t1').classList.remove('on')};
+const PI={A:['三相點 A (−57°C, 5.2 atm)','固、液、氣三相共存；壓力 5.2 atm 高於 1 atm。',[120,140]],Z:['昇華點 Z (−78°C, 1.0 atm)','常壓下乾冰加熱到 −78°C 不經液態，直接昇華為氣體。',[90,180]],C:['臨界點 C (31°C, 73 atm)','超過此點氣、液無法區分。',[280,30]],S:['AB 線斜率比較','CO₂ 與多數物質：斜率為正，加壓熔點上升。水：斜率為負，加壓冰的熔點下降。',[128,90]]};
+function ph(k){const[x,y]=PI[k][2];$('#ph').innerHTML='<g fill="none" stroke="#A1A1AA"><path d="M30 10V210H310"/><path d="M50 200Q90 190 120 140M120 140Q200 120 280 30" stroke="#6366F1" stroke-width="2"/><path d="M120 140L135 40" stroke="'+(k=='S'?'#F59E0B':'#6366F1')+'" stroke-width="'+(k=='S'?4:2)+'"/><path d="M30 180H120M90 180V210M120 140V210M280 30V210" stroke-dasharray="3 4" stroke-opacity=".5"/></g><g fill="#FAFAFA"><text x="55" y="100">I 固體</text><text x="180" y="70">II 液體</text><text x="200" y="170">III 氣體</text></g><g fill="#A1A1AA"><text x="2" y="184">1.0</text><text x="2" y="144">5.2</text><text x="2" y="34">73</text><text x="76" y="226">−78</text><text x="106" y="226">−57</text><text x="270" y="226">31</text></g><circle cx="'+x+'" cy="'+y+'" r="9" fill="#22D3EE"/>';$('#pt').innerHTML='<b>'+PI[k][0]+'</b><br>'+PI[k][1];[...$('#pb').children].forEach(b=>b.classList.toggle('on',b.dataset.k==k))}
+Object.keys(PI).forEach(k=>{const b=X('button',{},PI[k][0].split(' (')[0]+(k=='S'?'':' '+k));b.dataset.k=k;b.onclick=()=>ph(k);$('#pb').append(b)});ph('A');
+// Lab03
+[['生石灰／熟石灰／石灰石','CaO／Ca(OH)₂／CaCO₃'],['蘇打／小蘇打／燒鹼','Na₂CO₃／NaHCO₃／NaOH'],['暫時／永久硬水陰離子','暫時：HCO₃⁻　永久：SO₄²⁻、Cl⁻'],['明礬化學式','KAl(SO₄)₂·12H₂O'],['去離子水雙柱再生劑','陽離子柱：鹽酸 HCl　陰離子柱：NaOH'],['軟水樹脂 R–Na 再生劑','濃食鹽水 NaCl'],['漂白水＋鹽酸','NaClO + 2HCl → NaCl + H₂O + Cl₂↑（劇毒）'],['溶於水放熱三大特例','NaOH、濃硫酸稀釋、所有氣體']].forEach(([q,a])=>{const c=X('div',{className:'card fc s4',tabIndex:0},'<h3>'+q+'</h3><span style="color:var(--cy)" hidden>'+a+'</span>');const f=()=>{const s=c.querySelector('span'),o=c.querySelector('h3');s.hidden=!s.hidden;o.hidden=!o.hidden};c.onclick=f;c.onkeydown=e=>{if(e.key=='Enter')f()};c.title='點擊翻面';$('#fl').append(c)});
+// 評量
+const Q=[['₂₀Ca 的電子組態？',['(2,8,10)','(2,8,8,2)','(2,8,9,1)','(2,10,8)'],1,'最外層最多 8 個，Ca 為 (2,8,8,2)，第四週期 2A。'],
+['下列何者溶於水為放熱？',['蔗糖','NaOH','硝酸銨','氯化銨'],1,'NaOH、濃硫酸稀釋、所有氣體溶於水為放熱特例。'],
+['乾冰在常壓下直接昇華，因為？',['沸點很低','三相點壓力高於 1 atm','密度太小','不能溶於水'],1,'CO₂ 三相點 5.2 atm 高於 1 atm，常壓無液態。'],
+['同位素的差異在於？',['質子數','電子數','中子數','原子序'],2,'同位素質子數相同、中子數不同。'],
+['水在多少 °C 密度最大？',['0°C','4°C','10°C','100°C'],1,'4°C 密度最大，約 1 g/cm³。'],
+['暫時硬水的陰離子是？',['HCO₃⁻','SO₄²⁻','Cl⁻','NO₃⁻'],0,'HCO₃⁻ 煮沸可生成碳酸鹽沉澱；SO₄²⁻、Cl⁻ 為永久硬水。'],
+['去離子水第一管柱裝什麼？',['陰離子樹脂','陽離子樹脂','活性碳','半透膜'],1,'陽離子樹脂 R–H 釋出 H⁺，用鹽酸再生。'],
+['逆滲透必要條件？',['加熱','外加壓力與半透膜','加入明礬','通入氯氣'],1,'濃→稀需加壓，只讓水分子通過半透膜。'],
+['漂白水混鹽酸會產生？',['O₂','H₂','Cl₂','CO₂'],2,'NaClO + 2HCl → NaCl + H₂O + Cl₂↑，劇毒。'],
+['哪種物質的固液線（AB）斜率為負？',['CO₂','水','多數金屬','乾冰'],1,'水加壓使冰的熔點下降，斜率為負。']];
+let score=0;function qz(){score=0;$('#sc').textContent='0 / 100';$('#qz').innerHTML='';Q.forEach((q,i)=>{const c=X('div',{className:'card q s6'},'<h3>'+(i+1)+'. '+q[0]+'</h3>');const ex=X('p',{hidden:true,style:'margin:8px 0 0;color:var(--em)'},'詳解：'+q[3]);let lk=false;
+q[1].forEach((o,j)=>{const b=X('button',{},o);b.onclick=()=>{if(lk)return;lk=true;if(j==q[2]){b.classList.add('ok');score+=10}else{b.classList.add('no');c.querySelectorAll('button')[q[2]].classList.add('ok')}ex.hidden=false;$('#sc').textContent=score+' / 100'};c.append(b)});c.append(ex);$('#qz').append(c)})}
+$('#rs').onclick=qz;qz();
+</script></body></html>
